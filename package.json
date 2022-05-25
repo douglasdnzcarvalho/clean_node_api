@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/douglasdnzcarvalho/clean_node_api/issues"
   },
-  "homepage": "https://github.com/douglasdnzcarvalho/clean_node_api#readme"
+  "homepage": "https://github.com/douglasdnzcarvalho/clean_node_api#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^4.1.3"
+  }
 }
