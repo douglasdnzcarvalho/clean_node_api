@@ -5,8 +5,12 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
-    "test": "jest --passWithNoTests --watch",
-    "test:staged": "jest --passWithNoTests"
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test:watch": "npm test -- --watch",
+    "test:watch:unit": "npm test:watch -- -c jest-unit-config.js",
+    "test:watch:integration": "npm test:watch -- -c jest-integration-config.js",
+    "test:staged": "npm test -- --findRelatedTests",
+    "test:ci": "npm test -- --coverage"
   },
   "repository": {
     "type": "git",
