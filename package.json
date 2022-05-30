@@ -6,7 +6,7 @@
   "scripts": {
     "check": "npx npm-check -s -u",
     "prepare": "husky install",
-    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --no-cache",
     "test:watch": "npm test -- --watch",
     "test:watch:unit": "npm test:watch -- -c jest-unit-config.js",
     "test:watch:integration": "npm test:watch -- -c jest-integration-config.js",
