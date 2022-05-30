@@ -46,5 +46,8 @@
     "bcrypt": "^5.0.1",
     "mongodb": "^4.6.0",
     "validator": "^13.7.0"
+  },
+  "engines": {
+    "node": "16.x"
   }
 }
