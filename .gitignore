@@ -3,4 +3,4 @@ dist
 coverage
 
 # @shelf/jest-mongodb
-globalConfig.js
+globalConfig.json
