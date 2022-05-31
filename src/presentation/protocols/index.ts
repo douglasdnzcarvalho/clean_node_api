@@ -1,3 +1,3 @@
-export * from './controller'
-export * from './email-validator'
-export * from './http'
+export * from './controller.interface'
+export * from './email-validator.interface'
+export * from './http.interface'
