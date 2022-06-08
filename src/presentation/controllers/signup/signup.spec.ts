@@ -1,6 +1,6 @@
 import { AccountModel } from '../../../domain/models/account'
 import { AddAccount, AddAccountModel } from '../../../domain/usecases/add-account'
-import { badRequest, ok, serverError } from '../../helpers/http-helper'
+import { badRequest, ok, serverError } from '../../helpers/http/http-helper'
 import { Validation } from '../../helpers/validators/validation'
 import { SignUpController } from './signup'
 
