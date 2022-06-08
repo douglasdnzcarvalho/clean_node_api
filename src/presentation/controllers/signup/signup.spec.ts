@@ -62,6 +62,7 @@ const makeSut = (): SutTypes => {
 }
 
 describe('SignUp Controller', () => {
+  /* BLOCO DE TESTES REMOVIDO PARA APLICAR O DESIGN PATTERN COMPOSITE
   test('Should return 400 if no name is provided', async () => {
     const { sut } = makeSut()
     const httpRequest = {
@@ -113,6 +114,7 @@ describe('SignUp Controller', () => {
     const httpResponse = await sut.handle(httpRequest)
     expect(httpResponse).toEqual(badRequest(new MissingParamError('passwordConfirmation')))
   })
+  */
 
   test('Should return 400 if password confirmation fails', async () => {
     const { sut } = makeSut()
