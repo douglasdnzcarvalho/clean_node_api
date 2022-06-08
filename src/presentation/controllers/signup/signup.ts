@@ -1,7 +1,6 @@
 import { AddAccount } from '../../../domain/usecases/add-account'
 import { badRequest, ok, serverError } from '../../helpers/http/http-helper'
-import { Validation } from '../../helpers/validators/validation'
-import { Controller, HttpRequest, HttpResponse } from '../../protocols'
+import { Controller, HttpRequest, HttpResponse, Validation } from '../../protocols'
 
 export class SignUpController implements Controller {
   private readonly addAccount: AddAccount;
