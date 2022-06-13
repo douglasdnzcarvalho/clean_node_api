@@ -2,7 +2,7 @@ import { AccountModel } from '../../../domain/models/account'
 import { AddAccount, AddAccountModel } from '../../../domain/usecases/add-account'
 import { badRequest, ok, serverError } from '../../helpers/http/http-helper'
 import { Validation } from '../../protocols'
-import { SignUpController } from './signup'
+import { SignUpController } from './signup-controller'
 
 const makeFakeValidAccountModel = (): AccountModel => ({
   id: 'valid_id',
