@@ -1,0 +1,31 @@
+version: "3.7"
+networks:
+  default:
+    name: clean-node-api
+volumes:
+  clean-node-api_mongo-data:
+    name: clean-node-api_mongo-data
+services:
+  database:
+    container_name: clean-node-api-database
+    image: mongo:5.0.9
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - clean-node-api_mongo-data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: clean-node-api
+      MONGO_INITDB_ROOT_PASSWORD: clean-node-api
+  server:
+    container_name: clean-node-api-server
+    build: .
+    image: clean-node-api
+    restart: always
+    command: npm start
+    ports:
+      - 5050:5050
+    volumes:
+      - ./dist:/usr/clean-node-api/dist
+    depends_on:
+      - database
