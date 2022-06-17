@@ -9,9 +9,8 @@
     "include": [
         "src"
     ],
-    // O ARQUIVO .eslintrc.json EXTENDE AS REGRAS DESSE. SE EXCLUIR OS CASOS DE TESTE COM A REGRA ABAIXO DÁ ERRO POIS ELE NÃO VAI SABER ONDE ACHAR OS ARQUIVOS 
-    // "exclude": [
-    //     "**/*.spec.ts",
-    //     "**/*.test.ts"
-    // ]
+    "exclude": [
+        "**/*.spec.ts",
+        "**/*.test.ts"
+    ]
 }
