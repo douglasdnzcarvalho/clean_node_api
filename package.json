@@ -7,6 +7,7 @@
     "build": "rimraf dist && tsc",
     "check": "npx npm-check -s -u",
     "dev": "sucrase-node src/main/server.ts",
+    "down": "docker-compose down",
     "prepare": "husky install",
     "start": "node dist/main/server.js",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --no-cache",
@@ -14,7 +15,8 @@
     "test:unit": "npm test -- -c jest-unit-config.js",
     "test:integration": "npm test -- -c jest-integration-config.js",
     "test:staged": "npm test -- --findRelatedTests",
-    "test:ci": "npm test -- --coverage"
+    "test:ci": "npm test -- --coverage",
+    "up": "npm run build && docker-compose up -d"
   },
   "repository": {
     "type": "git",

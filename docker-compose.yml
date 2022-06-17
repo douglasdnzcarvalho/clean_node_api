@@ -2,9 +2,6 @@ version: "3.7"
 networks:
   default:
     name: clean-node-api
-volumes:
-  clean-node-api_mongo-data:
-    name: clean-node-api_mongo-data
 services:
   database:
     container_name: clean-node-api-database
@@ -13,7 +10,7 @@ services:
     ports:
       - 27017:27017
     volumes:
-      - clean-node-api_mongo-data:/data/db
+      - ./data:/data/db
     environment:
       MONGO_INITDB_ROOT_USERNAME: clean-node-api
       MONGO_INITDB_ROOT_PASSWORD: clean-node-api

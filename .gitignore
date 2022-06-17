@@ -1,6 +1,7 @@
 node_modules
 dist
 coverage
+data
 
 # @shelf/jest-mongodb
 globalConfig.json
