@@ -19,10 +19,12 @@ services:
     build: .
     image: clean-node-api
     restart: always
-    command: npm start
+    command: npm run debug
     ports:
       - 5050:5050
+      - 9222:9222
     volumes:
       - ./dist:/usr/clean-node-api/dist
+      - ./package.json:/usr/clean-node-api/package.json
     depends_on:
       - database

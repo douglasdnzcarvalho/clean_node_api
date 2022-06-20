@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "check": "npx npm-check -s -u",
+    "debug": "node --inspect=0.0.0.0:9222 --nolazy dist/main/server.js",
     "dev": "sucrase-node src/main/server.ts",
     "down": "docker-compose down",
     "prepare": "husky install",
