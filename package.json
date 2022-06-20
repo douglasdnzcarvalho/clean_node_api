@@ -6,7 +6,7 @@
   "scripts": {
     "build": "rimraf dist && tsc",
     "check": "npx npm-check -s -u",
-    "debug": "node --inspect=0.0.0.0:9222 --nolazy dist/main/server.js",
+    "debug": "nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/main/server.js",
     "dev": "sucrase-node src/main/server.ts",
     "down": "docker-compose down",
     "prepare": "husky install",
@@ -49,6 +49,7 @@
     "husky": "^8.0.0",
     "jest": "^28.1.0",
     "lint-staged": "^12.4.2",
+    "nodemon": "^2.0.16",
     "rimraf": "^3.0.2",
     "sucrase": "^3.21.0",
     "supertest": "^6.2.3",
