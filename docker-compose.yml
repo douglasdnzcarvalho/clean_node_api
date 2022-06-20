@@ -16,10 +16,10 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: clean-node-api
   server:
     container_name: clean-node-api-server
-    build: .
-    image: clean-node-api
+    image: node:16-alpine
+    working_dir: /usr/clean-node-api
     restart: always
-    command: npm run debug
+    command: sh -c "npm set-script prepare '' && npm install --omit=dev --force && npm run debug"
     ports:
       - 5050:5050
       - 9222:9222
