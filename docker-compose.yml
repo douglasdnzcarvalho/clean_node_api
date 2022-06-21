@@ -19,12 +19,14 @@ services:
     image: node:16-alpine
     working_dir: /usr/clean-node-api
     restart: always
-    command: sh -c "npm set-script prepare '' && npm install --omit=dev --force && npm run debug"
+    command: sh -c "npm install --force --silent && npm run build && npm run debug"
     ports:
       - 5050:5050
       - 9222:9222
     volumes:
-      - ./dist:/usr/clean-node-api/dist
-      - ./package.json:/usr/clean-node-api/package.json
+      - ./:/usr/clean-node-api/
+      # No curso é mapeada apenas a pasta 'dist' mas creio ter mais sentido fazer essa filtragem apenas no momento do deploy
+      # - ./dist/:/usr/clean-node-api/dist/
+      # - ./package.json:/usr/clean-node-api/package.json
     depends_on:
       - database
