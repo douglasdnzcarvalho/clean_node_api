@@ -1,8 +1,8 @@
 node_modules
-dist
-coverage
-data
-tmp
+/dist
+/coverage
+/data
+/tmp
 
 # @shelf/jest-mongodb
 globalConfig.json
