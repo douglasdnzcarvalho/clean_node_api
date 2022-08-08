@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf dist && tsc",
-    "build:watch": "rimraf dist && npx mkdirp tmp && tsc --watch >> tmp/compilation.txt",
+    "build": "rimraf dist && tsc -p tsconfig-build.json",
+    "build:watch": "rimraf dist && npx mkdirp tmp && tsc -p tsconfig-build.json --watch >> tmp/compilation.txt",
     "check": "npx npm-check -s -u",
     "debug": "nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/main/server.js",
     "dev": "sucrase-node src/main/server.ts",
@@ -61,11 +61,15 @@
     "bcrypt": "^5.0.1",
     "express": "^4.18.1",
     "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
     "mongodb": "^4.6.0",
     "validator": "^13.7.0"
   },
   "engines": {
     "node": "16.x",
     "npm": "8.5.x"
+  },
+  "_moduleAliases": {
+    "@": "dist"
   }
 }
