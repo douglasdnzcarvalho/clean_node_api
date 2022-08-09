@@ -1,12 +1,12 @@
 import { AccountModel } from '@/domain/models/account'
-import { Authentication, AuthenticationModel } from '@/domain/usecases/authentication'
+import { Authentication, AuthenticationParams } from '@/domain/usecases/authentication'
 import { HashComparer } from '../../protocols/criptography/hash-comparer'
 import { Encrypter } from '../../protocols/criptography/encrypter'
 import { LoadAccountByEmailRepository } from '../../protocols/db/account/load-account-by-email-repository'
 import { UpdateAccessTokenRepository } from '../../protocols/db/account/update-access-token-repository'
 import { DbAuthentication } from './db-authentication'
 
-const makeFakeAuthentication = (): AuthenticationModel => ({
+const makeFakeAuthentication = (): AuthenticationParams => ({
   email: 'any_email@mail.com',
   password: 'any_password'
 })

@@ -1,6 +1,6 @@
 import { AccountModel } from '@/domain/models/account'
-import { AddAccount, AddAccountModel } from '@/domain/usecases/add-account'
-import { Authentication, AuthenticationModel } from '@/domain/usecases/authentication'
+import { AddAccount, AddAccountParams } from '@/domain/usecases/add-account'
+import { Authentication, AuthenticationParams } from '@/domain/usecases/authentication'
 import { EmailInUseError } from '../../errors'
 import { badRequest, forbidden, ok, serverError } from '../../helpers/http/http-helper'
 import { Validation } from '../../protocols'
@@ -15,7 +15,7 @@ const makeFakeValidAccountModel = (): AccountModel => ({
 
 const makeAddAccount = (): AddAccount => {
   class AddAccountStub implements AddAccount {
-    async add (account: AddAccountModel): Promise<AccountModel> {
+    async add (account: AddAccountParams): Promise<AccountModel> {
       return await new Promise(resolve => resolve(makeFakeValidAccountModel()))
     }
   }
@@ -33,7 +33,7 @@ const makeValidation = (): Validation => {
 
 const makeAuthentication = (): Authentication => {
   class AuthenticationStub implements Authentication {
-    async auth (authentication: AuthenticationModel): Promise<string> {
+    async auth (authentication: AuthenticationParams): Promise<string> {
       return 'any_token'
     }
   }
