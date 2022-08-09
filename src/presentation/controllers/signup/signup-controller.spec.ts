@@ -1,44 +1,11 @@
-import { AccountModel } from '@/domain/models/account'
-import { AddAccount, AddAccountParams } from '@/domain/usecases/add-account'
-import { Authentication, AuthenticationParams } from '@/domain/usecases/authentication'
+import { mockAddAccount, mockAuthentication } from '@/domain/test'
+import { AddAccount } from '@/domain/usecases/add-account'
+import { Authentication } from '@/domain/usecases/authentication'
+import { mockValidation } from '@/validation/test'
 import { EmailInUseError } from '../../errors'
 import { badRequest, forbidden, ok, serverError } from '../../helpers/http/http-helper'
 import { Validation } from '../../protocols'
 import { SignUpController } from './signup-controller'
-
-const makeFakeValidAccountModel = (): AccountModel => ({
-  id: 'valid_id',
-  name: 'valid_name',
-  email: 'valid_email@mail.com',
-  password: 'valid_password'
-})
-
-const makeAddAccount = (): AddAccount => {
-  class AddAccountStub implements AddAccount {
-    async add (account: AddAccountParams): Promise<AccountModel> {
-      return await new Promise(resolve => resolve(makeFakeValidAccountModel()))
-    }
-  }
-  return new AddAccountStub()
-}
-
-const makeValidation = (): Validation => {
-  class ValidationStub implements Validation {
-    validate (input: any): Error {
-      return null
-    }
-  }
-  return new ValidationStub()
-}
-
-const makeAuthentication = (): Authentication => {
-  class AuthenticationStub implements Authentication {
-    async auth (authentication: AuthenticationParams): Promise<string> {
-      return 'any_token'
-    }
-  }
-  return new AuthenticationStub()
-}
 
 type SutTypes = {
   sut: SignUpController
@@ -48,9 +15,9 @@ type SutTypes = {
 }
 
 const makeSut = (): SutTypes => {
-  const addAccountStub = makeAddAccount()
-  const validationStub = makeValidation()
-  const authenticationStub = makeAuthentication()
+  const addAccountStub = mockAddAccount()
+  const validationStub = mockValidation()
+  const authenticationStub = mockAuthentication()
   const sut = new SignUpController(addAccountStub, validationStub, authenticationStub)
 
   return {
