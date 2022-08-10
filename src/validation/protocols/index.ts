@@ -1,1 +1,1 @@
-export * from './email-validator.interface'
+export * from './email-validator'

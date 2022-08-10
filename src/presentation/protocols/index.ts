@@ -1,3 +1,3 @@
-export * from './controller.interface'
-export * from './http.interface'
+export * from './controller'
+export * from './http'
 export * from './validation'
