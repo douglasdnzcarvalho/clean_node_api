@@ -1,3 +1,6 @@
+[![Build Status](https://app.travis-ci.com/douglasdnzcarvalho/clean_node_api.svg?branch=main)](https://app.travis-ci.com/douglasdnzcarvalho/clean_node_api)
+[![Coverage Status](https://coveralls.io/repos/github/douglasdnzcarvalho/clean_node_api/badge.svg?branch=main)](https://coveralls.io/github/douglasdnzcarvalho/clean_node_api?branch=main)
+
 # **Clean Node API**
 
 > ## APIs construídas no treinamento
