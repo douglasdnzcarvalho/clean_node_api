@@ -1,4 +1,4 @@
-import { mockAddAccount, mockAuthentication, throwError } from '@/tests/domain/test'
+import { mockAddAccount, mockAuthentication, throwError } from '@/tests/domain/mocks'
 import { AddAccount } from '@/domain/usecases/add-account'
 import { Authentication } from '@/domain/usecases/authentication'
 import { mockValidation } from '@/tests/validation/test'

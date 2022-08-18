@@ -1,4 +1,4 @@
-import { throwError } from '@/tests/domain/test'
+import { throwError } from '@/tests/domain/mocks'
 import { InvalidParamError } from '@/presentation/errors'
 import { EmailValidator } from '@/validation/protocols'
 import { mockEmailValidator } from '@/tests/validation/test'

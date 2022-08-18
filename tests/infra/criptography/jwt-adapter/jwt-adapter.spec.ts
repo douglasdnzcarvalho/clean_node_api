@@ -1,5 +1,5 @@
 import { JwtAdapter } from '@/infra/criptography/jwt-adapter/jwt-adapter'
-import { throwError } from '@/tests/domain/test'
+import { throwError } from '@/tests/domain/mocks'
 import jwt from 'jsonwebtoken'
 
 jest.mock('jsonwebtoken', () => ({

@@ -1,4 +1,4 @@
-import { mockAuthentication } from '@/tests/domain/test'
+import { mockAuthentication } from '@/tests/domain/mocks'
 import { Authentication } from '@/domain/usecases/authentication'
 import { mockValidation } from '@/tests/validation/test'
 import { badRequest, ok, serverError, unauthorized } from '@/presentation/helpers'
