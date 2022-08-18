@@ -1,6 +1,6 @@
 import { AddAccountRepository } from '@/data/protocols/db/account/add-account-repository'
 import { Hasher } from '@/data/protocols/criptography/hasher'
-import { DbAddAccount } from '@/data/usecases/add-account/db-add-account'
+import { DbAddAccount } from '@/data/usecases/db-add-account'
 import { LoadAccountByEmailRepository } from '@/data/protocols/db/account/load-account-by-email-repository'
 import { mockAccountModel, mockAddAccountParams, throwError } from '@/tests/domain/mocks'
 import { mockAddAccountRepository, mockHasher, mockLoadAccountByEmailRepository } from '@/tests/data/test'
