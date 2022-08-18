@@ -5,7 +5,7 @@ import { mockValidation } from '@/tests/validation/test'
 import { EmailInUseError } from '@/presentation/errors'
 import { badRequest, forbidden, ok, serverError } from '@/presentation/helpers/http/http-helper'
 import { Validation } from '@/presentation/protocols'
-import { SignUpController } from '@/presentation/controllers/signup/signup-controller'
+import { SignUpController } from '@/presentation/controllers/signup-controller'
 
 type SutTypes = {
   sut: SignUpController
