@@ -1,7 +1,7 @@
 import { mockAuthentication } from '@/tests/domain/test'
 import { Authentication } from '@/domain/usecases/authentication'
 import { mockValidation } from '@/tests/validation/test'
-import { badRequest, ok, serverError, unauthorized } from '@/presentation/helpers/http/http-helper'
+import { badRequest, ok, serverError, unauthorized } from '@/presentation/helpers'
 import { HttpRequest, Validation } from '@/presentation/protocols'
 import { LoginController } from '@/presentation/controllers/login-controller'
 

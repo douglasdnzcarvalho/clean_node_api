@@ -3,7 +3,7 @@ import { AddAccount } from '@/domain/usecases/add-account'
 import { Authentication } from '@/domain/usecases/authentication'
 import { mockValidation } from '@/tests/validation/test'
 import { EmailInUseError } from '@/presentation/errors'
-import { badRequest, forbidden, ok, serverError } from '@/presentation/helpers/http/http-helper'
+import { badRequest, forbidden, ok, serverError } from '@/presentation/helpers'
 import { Validation } from '@/presentation/protocols'
 import { SignUpController } from '@/presentation/controllers/signup-controller'
 
