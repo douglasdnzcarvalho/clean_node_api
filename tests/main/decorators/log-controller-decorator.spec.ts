@@ -1,5 +1,5 @@
 import { LogErrorRepository } from '@/data/protocols/db/log/log-error-repository'
-import { mockLogErrorRepository } from '@/tests/data/test'
+import { mockLogErrorRepository } from '@/tests/data/mocks'
 import { ok, serverError } from '@/presentation/helpers'
 import { Controller, HttpRequest, HttpResponse } from '@/presentation/protocols'
 import { LogControllerDecorator } from '@/main/decorators/log-controller-decorator'

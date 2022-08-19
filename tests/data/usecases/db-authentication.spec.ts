@@ -3,9 +3,9 @@ import { HashComparer } from '@/data/protocols/criptography/hash-comparer'
 import { Encrypter } from '@/data/protocols/criptography/encrypter'
 import { LoadAccountByEmailRepository } from '@/data/protocols/db/account/load-account-by-email-repository'
 import { UpdateAccessTokenRepository } from '@/data/protocols/db/account/update-access-token-repository'
-import { DbAuthentication } from '@/data/usecases/authentication/db-authentication'
+import { DbAuthentication } from '@/data/usecases/db-authentication'
 import { mockAuthenticationParams, throwError } from '@/tests/domain/mocks'
-import { mockLoadAccountByEmailRepository, mockEncrypter, mockHashComparer, mockUpdateAccessTokenRepository } from '@/tests/data/test'
+import { mockLoadAccountByEmailRepository, mockEncrypter, mockHashComparer, mockUpdateAccessTokenRepository } from '@/tests/data/mocks'
 
 type SutTypes = {
   sut: Authentication

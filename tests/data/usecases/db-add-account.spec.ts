@@ -3,7 +3,7 @@ import { Hasher } from '@/data/protocols/criptography/hasher'
 import { DbAddAccount } from '@/data/usecases/db-add-account'
 import { LoadAccountByEmailRepository } from '@/data/protocols/db/account/load-account-by-email-repository'
 import { mockAccountModel, mockAddAccountParams, throwError } from '@/tests/domain/mocks'
-import { mockAddAccountRepository, mockHasher, mockLoadAccountByEmailRepository } from '@/tests/data/test'
+import { mockAddAccountRepository, mockHasher, mockLoadAccountByEmailRepository } from '@/tests/data/mocks'
 
 type SutTypes = {
   sut: DbAddAccount
