@@ -2,24 +2,26 @@ import { Encrypter } from '@/data/protocols/criptography/encrypter'
 import { HashComparer } from '@/data/protocols/criptography/hash-comparer'
 import { Hasher } from '@/data/protocols/criptography/hasher'
 
-export const mockEncrypter = (): Encrypter => {
-  class EncrypterStub implements Encrypter {
-    async encrypt (value: string): Promise<string> {
-      return 'any_token'
-    }
-  }
+import faker from 'faker'
 
-  return new EncrypterStub()
+export class EncrypterSpy implements Encrypter {
+  plaintext: string
+  encryptedText = faker.datatype.uuid()
+
+  async encrypt (plaintext: string): Promise<string> {
+    this.plaintext = plaintext
+    return this.encryptedText
+  }
 }
 
-export const mockHasher = (): Hasher => {
-  class HasherStub implements Hasher {
-    async hash (value: string): Promise<string> {
-      return 'hashed_value'
-    }
-  }
+export class HasherSpy implements Hasher {
+  plaintext: string
+  hashedText = faker.datatype.uuid()
 
-  return new HasherStub()
+  async hash (plaintext: string): Promise<string> {
+    this.plaintext = plaintext
+    return this.hashedText
+  }
 }
 
 export const mockHashComparer = (): HashComparer => {

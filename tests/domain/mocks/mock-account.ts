@@ -1,24 +1,14 @@
-import { AccountModel } from '@/domain/models/account'
-import { AddAccount, AddAccountParams } from '@/domain/usecases/add-account'
+import { AddAccount, Authentication } from '@/domain/usecases'
 
-export const mockAddAccountParams = (): AddAccountParams => ({
-  name: 'any_name',
-  email: 'any_email@mail.com',
-  password: 'any_password'
+import faker from 'faker'
+
+export const mockAddAccountParams = (): AddAccount.Params => ({
+  name: faker.name.findName(),
+  email: faker.internet.email(),
+  password: faker.internet.password()
 })
 
-export const mockAccountModel = (): AccountModel => ({
-  id: 'any_id',
-  name: 'any_name',
-  email: 'any_email@mail.com',
-  password: 'hashed_password'
+export const mockAuthenticationParams = (): Authentication.Params => ({
+  email: faker.internet.email(),
+  password: faker.internet.password()
 })
-
-export const mockAddAccount = (): AddAccount => {
-  class AddAccountStub implements AddAccount {
-    async add (account: AddAccountParams): Promise<AccountModel> {
-      return mockAccountModel()
-    }
-  }
-  return new AddAccountStub()
-}

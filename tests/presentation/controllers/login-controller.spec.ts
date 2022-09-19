@@ -1,5 +1,4 @@
-import { mockAuthentication } from '@/tests/domain/mocks'
-import { Authentication } from '@/domain/usecases/authentication'
+import { AuthenticationSpy } from '@/tests/presentation/mocks'
 import { mockValidation } from '@/tests/validation/test'
 import { badRequest, ok, serverError, unauthorized } from '@/presentation/helpers'
 import { HttpRequest, Validation } from '@/presentation/protocols'
@@ -14,12 +13,12 @@ const mockHttpRequest = (): HttpRequest => ({
 
 type SutTypes = {
   sut: LoginController
-  authenticationStub: Authentication
+  authenticationStub: AuthenticationSpy
   validationStub: Validation
 }
 
 const makeSut = (): SutTypes => {
-  const authenticationStub = mockAuthentication()
+  const authenticationStub = new AuthenticationSpy()
   const validationStub = mockValidation()
   const sut = new LoginController(authenticationStub, validationStub)
 
@@ -127,10 +126,10 @@ describe('Login Controller', () => {
   })
 
   test('Should return 200 if valid credentials are provided', async () => {
-    const { sut } = makeSut()
+    const { sut, authenticationStub } = makeSut()
 
     const httpResponse = await sut.handle(mockHttpRequest())
-    expect(httpResponse).toEqual(ok('any_token'))
+    expect(httpResponse).toEqual(ok(authenticationStub.result))
   })
 
   test('Should call Validation with correct value', async () => {
