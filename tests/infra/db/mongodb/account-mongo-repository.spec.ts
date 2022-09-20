@@ -2,8 +2,13 @@ import { AccountMongoRepository } from '@/infra/db/mongodb/account-mongo-reposit
 import { MongoHelper } from '@/infra/db/mongodb/mongo-helper'
 import { mockAddAccountParams } from '@/tests/domain/mocks'
 import { Collection, ObjectId } from 'mongodb'
+import faker from 'faker'
 
 let accountCollection: Collection
+
+const makeSut = (): AccountMongoRepository => {
+  return new AccountMongoRepository()
+}
 
 describe('Account Mongo Repository', () => {
   beforeAll(async () => {
@@ -21,7 +26,7 @@ describe('Account Mongo Repository', () => {
 
   describe('add()', () => {
     test('Should return true on add success', async () => {
-      const sut = new AccountMongoRepository()
+      const sut = makeSut()
       const addAccountParams = mockAddAccountParams()
       const isValid = await sut.add(addAccountParams)
       expect(isValid).toBe(true)
@@ -30,7 +35,7 @@ describe('Account Mongo Repository', () => {
 
   describe('loadByEmail()', () => {
     test('Should return an account on loadByEmail success', async () => {
-      const sut = new AccountMongoRepository()
+      const sut = makeSut()
       const addAccountParams = mockAddAccountParams()
       await accountCollection.insertOne(addAccountParams)
       const account = await sut.loadByEmail(addAccountParams.email)
@@ -42,9 +47,82 @@ describe('Account Mongo Repository', () => {
     })
 
     test('Should return null if loadByEmail fails', async () => {
-      const sut = new AccountMongoRepository()
+      const sut = makeSut()
       const account = await sut.loadByEmail('any_email@mail.com')
       expect(account).toBeNull()
+    })
+  })
+
+  describe('loadByToken()', () => {
+    let name = faker.name.findName()
+    let email = faker.internet.email()
+    let password = faker.internet.password()
+    let accessToken = faker.datatype.uuid()
+
+    beforeEach(() => {
+      name = faker.name.findName()
+      email = faker.internet.email()
+      password = faker.internet.password()
+      accessToken = faker.datatype.uuid()
+    })
+
+    test('Should return an account on loadByToken without role', async () => {
+      const sut = makeSut()
+      await accountCollection.insertOne({
+        name,
+        email,
+        password,
+        accessToken
+      })
+      const account = await sut.loadByToken(accessToken)
+      expect(account).toBeTruthy()
+      expect(account.id).toBeTruthy()
+    })
+
+    test('Should return an account on loadByToken with admin role', async () => {
+      const sut = makeSut()
+      await accountCollection.insertOne({
+        name,
+        email,
+        password,
+        accessToken,
+        role: 'admin'
+      })
+      const account = await sut.loadByToken(accessToken, 'admin')
+      expect(account).toBeTruthy()
+      expect(account.id).toBeTruthy()
+    })
+
+    test('Should return null on loadByToken with invalid role', async () => {
+      const sut = makeSut()
+      await accountCollection.insertOne({
+        name,
+        email,
+        password,
+        accessToken
+      })
+      const account = await sut.loadByToken(accessToken, 'admin')
+      expect(account).toBeFalsy()
+    })
+
+    test('Should return an account on loadByToken if user is admin', async () => {
+      const sut = makeSut()
+      await accountCollection.insertOne({
+        name,
+        email,
+        password,
+        accessToken,
+        role: 'admin'
+      })
+      const account = await sut.loadByToken(accessToken)
+      expect(account).toBeTruthy()
+      expect(account.id).toBeTruthy()
+    })
+
+    test('Should return null if loadByToken fails', async () => {
+      const sut = makeSut()
+      const account = await sut.loadByToken(accessToken)
+      expect(account).toBeFalsy()
     })
   })
 
@@ -53,7 +131,7 @@ describe('Account Mongo Repository', () => {
       const newAccount = await accountCollection.insertOne(mockAddAccountParams())
       const newId = newAccount.insertedId.toHexString()
 
-      const sut = new AccountMongoRepository()
+      const sut = makeSut()
       await sut.updateAccessToken(newId, 'any_token')
 
       const account = await accountCollection.findOne({ _id: new ObjectId(newId) })
