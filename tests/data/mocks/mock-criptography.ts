@@ -1,4 +1,4 @@
-import { Encrypter } from '@/data/protocols/criptography/encrypter'
+import { Encrypter, Decrypter } from '@/data/protocols/criptography'
 import { HashComparer } from '@/data/protocols/criptography/hash-comparer'
 import { Hasher } from '@/data/protocols/criptography/hasher'
 
@@ -11,6 +11,16 @@ export class EncrypterSpy implements Encrypter {
   async encrypt (plaintext: string): Promise<string> {
     this.plaintext = plaintext
     return this.encryptedText
+  }
+}
+
+export class DecrypterSpy implements Decrypter {
+  plaintext = faker.internet.password()
+  encryptedText: string
+
+  async decrypt (encryptedText: string): Promise<string> {
+    this.encryptedText = encryptedText
+    return this.plaintext
   }
 }
 
