@@ -5,13 +5,16 @@ import { throwError } from '@/tests/domain/mocks'
 
 import MockDate from 'mockdate'
 import faker from 'faker'
+import { HttpRequest } from '@/presentation/protocols'
 
-const mockRequest = (): AddSurveyController.Request => ({
-  question: faker.random.words(),
-  answers: [{
-    image: faker.image.imageUrl(),
-    answer: faker.random.word()
-  }]
+const mockRequest = (): HttpRequest => ({
+  body: {
+    question: faker.random.words(),
+    answers: [{
+      image: faker.image.imageUrl(),
+      answer: faker.random.word()
+    }]
+  }
 })
 
 type SutTypes = {
@@ -44,7 +47,7 @@ describe('AddSurvey Controller', () => {
     const { sut, validationSpy } = makeSut()
     const request = mockRequest()
     await sut.handle(request)
-    expect(validationSpy.input).toEqual(request)
+    expect(validationSpy.input).toEqual(request.body)
   })
 
   test('Should return 400 if Validation fails', async () => {
@@ -58,7 +61,7 @@ describe('AddSurvey Controller', () => {
     const { sut, addSurveySpy } = makeSut()
     const request = mockRequest()
     await sut.handle(request)
-    expect(addSurveySpy.params).toEqual({ ...request, date: new Date() })
+    expect(addSurveySpy.params).toEqual({ ...request.body, date: new Date() })
   })
 
   test('Should return 500 if AddSurvey throws', async () => {
