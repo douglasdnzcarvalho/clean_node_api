@@ -13,7 +13,8 @@ const mockRequest = (): HttpRequest => ({
     answers: [{
       image: faker.image.imageUrl(),
       answer: faker.random.word()
-    }]
+    }],
+    date: new Date()
   }
 })
 
@@ -61,7 +62,7 @@ describe('AddSurvey Controller', () => {
     const { sut, addSurveySpy } = makeSut()
     const request = mockRequest()
     await sut.handle(request)
-    expect(addSurveySpy.params).toEqual({ ...request.body, date: new Date() })
+    expect(addSurveySpy.params).toEqual(request.body)
   })
 
   test('Should return 500 if AddSurvey throws', async () => {
