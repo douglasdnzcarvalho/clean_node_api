@@ -2,7 +2,7 @@ import { SurveyMongoRepository, MongoHelper } from '@/infra/db/mongodb'
 import { mockAddAccountParams, mockAddSurveyParams } from '@/tests/domain/mocks'
 
 import { Collection, ObjectId } from 'mongodb'
-// import FakeObjectId from 'bson-objectid'
+import FakeObjectId from 'bson-objectid'
 
 let surveyCollection: Collection
 let surveyResultCollection: Collection
@@ -74,21 +74,21 @@ describe('Survey Mongo Repository', () => {
     })
   })
 
-  // describe('loadById()', () => {
-  //   test('Should load survey by id on success', async () => {
-  //     const res = await surveyCollection.insertOne(mockAddSurveyParams())
-  //     const sut = makeSut()
-  //     const survey = await sut.loadById(res.insertedId.toHexString())
-  //     expect(survey).toBeTruthy()
-  //     expect(survey.id).toBeTruthy()
-  //   })
+  describe('loadById()', () => {
+    test('Should load survey by id on success', async () => {
+      const res = await surveyCollection.insertOne(mockAddSurveyParams())
+      const sut = makeSut()
+      const survey = await sut.loadById(res.insertedId.toHexString())
+      expect(survey).toBeTruthy()
+      expect(survey.id).toBeTruthy()
+    })
 
-  //   test('Should return null if survey does not exists', async () => {
-  //     const sut = makeSut()
-  //     const survey = await sut.loadById(new FakeObjectId().toHexString())
-  //     expect(survey).toBeFalsy()
-  //   })
-  // })
+    test('Should return null if survey does not exists', async () => {
+      const sut = makeSut()
+      const survey = await sut.loadById(new FakeObjectId().toHexString())
+      expect(survey).toBeFalsy()
+    })
+  })
 
   // describe('loadAnswers()', () => {
   //   test('Should load answers on success', async () => {

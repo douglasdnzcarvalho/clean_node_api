@@ -1,9 +1,9 @@
 import { MongoHelper, QueryBuilder } from '@/infra/db/mongodb'
-import { AddSurveyRepository, LoadSurveysRepository } from '@/data/protocols/db/survey'
+import { AddSurveyRepository, LoadSurveyByIdRepository, LoadSurveysRepository } from '@/data/protocols/db/survey'
 
 import { ObjectId } from 'mongodb'
 
-export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRepository {
+export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRepository, LoadSurveyByIdRepository {
   async add (data: AddSurveyRepository.Params): Promise<void> {
     const surveyCollection = MongoHelper.getCollection('surveys')
     await surveyCollection.insertOne(data)
@@ -42,11 +42,11 @@ export class SurveyMongoRepository implements AddSurveyRepository, LoadSurveysRe
     return MongoHelper.mapCollection(surveys)
   }
 
-  // async loadById (id: string): Promise<LoadSurveyByIdRepository.Result> {
-  //   const surveyCollection = MongoHelper.getCollection('surveys')
-  //   const survey = await surveyCollection.findOne({ _id: new ObjectId(id) })
-  //   return survey && MongoHelper.map(survey)
-  // }
+  async loadById (id: string): Promise<LoadSurveyByIdRepository.Result> {
+    const surveyCollection = MongoHelper.getCollection('surveys')
+    const survey = await surveyCollection.findOne({ _id: new ObjectId(id) })
+    return survey && MongoHelper.map(survey)
+  }
 
   // async loadAnswers (id: string): Promise<LoadAnswersBySurveyRepository.Result> {
   //   const surveyCollection = MongoHelper.getCollection('surveys')
