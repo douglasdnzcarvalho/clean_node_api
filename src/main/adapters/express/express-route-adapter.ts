@@ -4,8 +4,9 @@ import { Request, Response } from 'express'
 export const adaptRoute = (controller: Controller) => {
   return async (expressRequest: Request, expressResponse: Response) => {
     const httpRequest: HttpRequest = {
-      body: expressRequest.body ?? { },
-      params: expressRequest.params ?? { }
+      body: (expressRequest.body ?? { }),
+      params: (expressRequest.params ?? { }),
+      accountId: expressRequest.accountId
     }
     const httpResponse: HttpResponse = await controller.handle(httpRequest)
 
