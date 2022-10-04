@@ -4,20 +4,24 @@
     "module": "CommonJS",
     "target": "ES2022",
     "esModuleInterop": true,
-    "rootDir": ".",
+    "rootDirs": [
+      "src",
+      "tests"
+    ],
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "paths": {
       "@/tests/*": [
-        "tests/*"
+        "../tests/*"
       ],
       "@/*": [
-        "src/*"
+        "*"
       ]
     }
   },
   "include": [
-    "tests",
     "src",
-  ]
+    "tests"
+  ],
+  "exclude": []
 }
