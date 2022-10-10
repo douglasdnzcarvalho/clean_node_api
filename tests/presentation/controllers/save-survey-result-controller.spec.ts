@@ -8,8 +8,12 @@ import MockDate from 'mockdate'
 import faker from 'faker'
 
 const mockRequest = (answer: string = null): SaveSurveyResultController.Request => ({
-  surveyId: faker.datatype.uuid(),
-  answer,
+  params: {
+    survey_id: faker.datatype.uuid()
+  },
+  body: {
+    answer
+  },
   accountId: faker.datatype.uuid()
 })
 
@@ -43,14 +47,14 @@ describe('SaveSurveyResult Controller', () => {
     const { sut, loadAnswersBySurveySpy } = makeSut()
     const request = mockRequest()
     await sut.handle(request)
-    expect(loadAnswersBySurveySpy.id).toBe(request.surveyId)
+    expect(loadAnswersBySurveySpy.id).toBe(request.params.survey_id)
   })
 
   test('Should return 403 if LoadAnswersBySurvey returns null', async () => {
     const { sut, loadAnswersBySurveySpy } = makeSut()
     loadAnswersBySurveySpy.result = []
     const httpResponse = await sut.handle(mockRequest())
-    expect(httpResponse).toEqual(forbidden(new InvalidParamError('surveyId')))
+    expect(httpResponse).toEqual(forbidden(new InvalidParamError('survey_id')))
   })
 
   test('Should return 500 if LoadAnswersBySurvey throws', async () => {
@@ -71,10 +75,10 @@ describe('SaveSurveyResult Controller', () => {
     const request = mockRequest(loadAnswersBySurveySpy.result[0])
     await sut.handle(request)
     expect(saveSurveyResultSpy.params).toEqual({
-      surveyId: request.surveyId,
+      surveyId: request.params.survey_id,
       accountId: request.accountId,
       date: new Date(),
-      answer: request.answer
+      answer: request.body.answer
     })
   })
 
