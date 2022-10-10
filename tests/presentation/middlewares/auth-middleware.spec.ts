@@ -5,7 +5,9 @@ import { LoadAccountByTokenSpy } from '@/tests/presentation/mocks'
 import { throwError } from '@/tests/domain/mocks'
 
 const mockRequest = (): AuthMiddleware.Request => ({
-  accessToken: 'any_token'
+  headers: {
+    'access-token': 'any_token'
+  }
 })
 
 type SutTypes = {
@@ -34,7 +36,7 @@ describe('Auth Middleware', () => {
     const { sut, loadAccountByTokenSpy } = makeSut(role)
     const httpRequest = mockRequest()
     await sut.handle(httpRequest)
-    expect(loadAccountByTokenSpy.accessToken).toBe(httpRequest.accessToken)
+    expect(loadAccountByTokenSpy.accessToken).toBe(httpRequest.headers['access-token'])
     expect(loadAccountByTokenSpy.role).toBe(role)
   })
 
