@@ -1,4 +1,4 @@
-import * as swaggerConfig from '@/main/docs'
+import swaggerConfig from '@/main/docs'
 import { noCache } from '@/main/middlewares'
 
 import { serve, setup } from 'swagger-ui-express'
