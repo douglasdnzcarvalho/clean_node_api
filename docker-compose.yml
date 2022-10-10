@@ -20,6 +20,8 @@ services:
     working_dir: /usr/clean-node-api
     restart: always
     command: sh -c "npm install --force --silent && npm run build && npm run debug"
+    environment:
+      - MONGO_URL=mongodb://database:27017/clean-node-api
     ports:
       - 5050:5050
       - 9222:9222
