@@ -6,6 +6,7 @@
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig-build.json",
     "build:watch": "rimraf dist && npx mkdirp tmp && tsc -p tsconfig-build.json --watch >> tmp/compilation.txt",
+    "postbuild": "copyfiles -u 1 public/**/* dist/public",
     "check": "npx npm-check -s -u",
     "debug": "nodemon -L --watch ./dist --inspect=0.0.0.0:9222 --nolazy ./dist/main/server.js",
     "dev": "sucrase-node src/main/server.ts",
@@ -41,6 +42,7 @@
     "@types/swagger-ui-express": "^4.1.3",
     "@types/validator": "^13.7.2",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.16.0",
     "eslint-config-standard-with-typescript": "^21.0.1",
     "eslint-plugin-import": "^2.26.0",
