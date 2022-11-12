@@ -1,4 +1,4 @@
-import { BCryptAdapter } from '@/infra/criptography/bcrypt-adapter/bcrypt-adapter'
+import { BCryptAdapter } from '@/infra/criptography'
 import { throwError } from '@/tests/domain/mocks'
 import bcrypt from 'bcrypt'
 

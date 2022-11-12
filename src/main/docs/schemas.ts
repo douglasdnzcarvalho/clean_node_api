@@ -10,7 +10,7 @@ import {
   saveSurveyParamsSchema,
   surveyResultSchema,
   surveyResultAnswerSchema
-} from './schemas/'
+} from '@/main/docs/schemas/'
 
 export default {
   account: accountSchema,
