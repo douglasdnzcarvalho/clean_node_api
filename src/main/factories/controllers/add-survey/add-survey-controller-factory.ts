@@ -1,4 +1,4 @@
-import { makeAddSurveyValidation } from '@/main/factories/controllers/add-survey/add-survey-validation-factory'
+import { makeAddSurveyValidation } from '@/main/factories/controllers/add-survey'
 import { makeDbAddSurvey } from '@/main/factories/usecases'
 import { makeLogControllerDecorator } from '@/main/factories/decorators/log-controller-decorator-factory'
 import { Controller } from '@/presentation/protocols'
