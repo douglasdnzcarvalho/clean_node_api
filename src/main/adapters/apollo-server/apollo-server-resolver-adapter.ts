@@ -4,6 +4,7 @@ import { UserInputError, AuthenticationError, ForbiddenError, ApolloError } from
 export const adaptResolver = async (controller: Controller, args?: any, context?: any): Promise<any> => {
   const httpRequest: HttpRequest = {
     body: (args ?? { }),
+    params: (args ?? { }),
     accountId: context?.req?.accountId
   }
   const httpResponse = await controller.handle(httpRequest)
