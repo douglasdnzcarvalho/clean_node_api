@@ -1,7 +1,7 @@
 import { throwError } from '@/tests/domain/mocks'
 import { InvalidParamError } from '@/presentation/errors'
 import { EmailValidator } from '@/validation/protocols'
-import { mockEmailValidator } from '@/tests/validation/test'
+import { mockEmailValidator } from '@/tests/validation/mocks'
 import { EmailValidation } from '@/validation/validators'
 
 type SutTypes = {

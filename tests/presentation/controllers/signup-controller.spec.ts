@@ -1,7 +1,6 @@
 import { throwError } from '@/tests/domain/mocks'
-import { AddAccountSpy, AuthenticationSpy } from '@/tests/presentation/mocks'
+import { AddAccountSpy, AuthenticationSpy, ValidationSpy } from '@/tests/presentation/mocks'
 import { AddAccount } from '@/domain/usecases/add-account'
-import { mockValidation } from '@/tests/validation/test'
 import { EmailInUseError } from '@/presentation/errors'
 import { badRequest, forbidden, ok, serverError } from '@/presentation/helpers'
 import { Validation } from '@/presentation/protocols'
@@ -28,7 +27,7 @@ type SutTypes = {
 
 const makeSut = (): SutTypes => {
   const addAccountStub = new AddAccountSpy()
-  const validationStub = mockValidation()
+  const validationStub = new ValidationSpy()
   const authenticationStub = new AuthenticationSpy()
   const sut = new SignUpController(addAccountStub, validationStub, authenticationStub)
 
