@@ -16,7 +16,6 @@ jobs:
 
     - name: Generate coverage report
       run: |
-        echo ${{ secrets.COVERALLS_TOKEN }}
         npm install
         npm run test:ci
 
