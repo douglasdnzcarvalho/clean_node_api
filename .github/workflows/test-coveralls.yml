@@ -18,7 +18,6 @@ jobs:
       run: |
         npm install
         npm run test:ci
-        echo ${{ secrets.COVERALLS_TOKEN }}
 
     - name: Send coverage
       uses: coverallsapp/github-action@1.1.3
