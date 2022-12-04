@@ -19,7 +19,7 @@ jobs:
         npm install
         npm run test:ci
 
-    - name: Coveralls GitHub Action
+    - name: Send coverage
       uses: coverallsapp/github-action@1.1.3
       with:
         github-token: ${{ secrets.COVERALLS_TOKEN }}
