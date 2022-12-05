@@ -1,11 +1,11 @@
-import { apiKeyAuthSchema } from '@/main/docs/schemas/'
+import { apiKeyAuthSchema } from '@/main/openapi/schemas'
 import {
   badRequest,
   serverError,
   unauthorized,
   notFound,
   forbidden
-} from '@/main/docs/components/'
+} from '@/main/openapi/components'
 
 export default {
   securitySchemes: {

@@ -3,7 +3,7 @@ import {
   surveyPath,
   signUpPath,
   surveyResultPath
-} from '@/main/docs/paths/'
+} from '@/main/openapi/paths'
 
 export default {
   '/login': loginPath,
