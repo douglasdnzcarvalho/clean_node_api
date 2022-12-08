@@ -17,9 +17,9 @@ export const signUpPath = {
       200: {
         description: 'Sucesso',
         content: {
-          'application/json': {
+          'text/plain': {
             schema: {
-              $ref: '#/schemas/account'
+              type: 'string'
             }
           }
         }
