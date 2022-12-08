@@ -39,7 +39,7 @@
 * Builder
 * Singleton
 
-> ## Metodologias e Designs
+> ## Metodologias e Arquitetura
 
 * TDD
 * Clean Architecture
@@ -105,13 +105,14 @@
 
 > ## Features do GraphQL
 
-* Types
+* Type Definition
 * Queries
 * Mutations
 * Resolvers
 * Directives
 * Scalars
 * Plugins
+* Error Handling
 
 > ## Features do Git
 
@@ -137,15 +138,6 @@
 * Build
 * Deploy
 * Uso de Breakpoints
-
-> ## Features do GraphQL
-
-* Resolvers
-* Type Definitions
-* Directives
-* Scalars
-* Plugins
-* Error Handling
 
 > ## Features de Testes
 
